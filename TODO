@@ -1,0 +1,39 @@
+-Coddit
+  #Entities
+    --Post
+      -> *ID
+      -> Imagem
+      -> Título
+      -> Subtítulo
+      -> Data_created
+      -> Corpo
+      -> Autor
+      -> Tags
+      -> Comments?
+      -> has_many :comments
+
+      ---Comment
+        -> *ID
+        -> Text
+        ->post_id
+        -> belongs_to :post
+        -> has_one :post
+
+      ---Upvote
+        -> *ID
+        -> post_id
+        -> enabled
+        -> user_id
+
+      ---Tags
+        -> *ID
+        -> name
+        -> post_id
+
+  #Methods
+    --Busca
+      -> Por Título
+    --Filtro
+      -> Por assunto (tags)
+    --Assuntos
+      -> Tabela que armazena toda nova tag que for criada
