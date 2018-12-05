@@ -1,5 +1,19 @@
-- Listagem de todos os posts
-- Listagem de todos os posts na home
+- Criar layout do sistema
 - Criação de post
-- cadastro de usuário
-- Criação de comentário
+  - Formulário de post com campos:
+    - Título
+    - Conteúdo
+    - (Autor)
+- Listagem de todos os Posts
+  - Título e preview de conteúdo
+  - Cards
+  - Dar feedback quando não há resultados
+- Visualização de post
+  - Título, (autor), conteúdo, data de publicação
+- Busca de post por título
+  - Formulário de filtro de posts com apenas o campo de busca de título
+  - Colocar na tela de listagem de posts
+
+- Paginação de posts
+  - Paginar a listagem de post
+  - Kaminari

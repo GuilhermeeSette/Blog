@@ -1,3 +1,5 @@
 class HomeController < BaseController
-  def index; end
+  def index
+
+  end
 end
