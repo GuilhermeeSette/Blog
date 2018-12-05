@@ -1,1 +1,64 @@
-<h1>Hello Codinhos</h1>
+
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item">
+          <%= image_tag("tec.jpeg", class: "first-slide slide-image") %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Tecnologia</h1>
+              <p>Fique por dentro do mundo da tecnologia.</p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("news.jpeg", class: "second-slide slide-image") %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Notícias</h1>
+              <p>Compartilhe ideias e acontecimentos.</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="item active">
+          <%= image_tag("social_media.jpeg", class: "third-slide slide-image") %>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Redes sociais</h1>
+              <p>Não perca o que está bombando no momento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div class="container-fluid">
+
+      <% @posts.each do |post| %>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel text-center">
+            <div class="panel-body ">
+              <h3 class=""><%= post.title %></h3>
+              <p class="panel-text "><%= post.content.truncate(20) %></p>
+              <a><%= link_to 'Leia mais', post %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
