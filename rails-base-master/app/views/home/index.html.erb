@@ -46,7 +46,13 @@
       </a>
     </div>
     <div class="container-fluid">
-      <a class="btn btn-success"><%= link_to 'Novo Post', new_post_path  %></a>
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <a ><%= link_to fa_icon('plus'), new_post_path, class: "btn btn-success new"  %></a>
+
+        </div>
+
+      </div>
       <% @posts.each do |post| %>
       <div class="row">
         <div class="col-md-12">
