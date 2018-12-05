@@ -11,19 +11,25 @@
       -> Tags
       -> Comments?
       -> has_many :comments
+      -> has_many :upvote
 
       ---Comment
         -> *ID
         -> Text
         ->post_id
         -> belongs_to :post
-        -> has_one :post
 
       ---Upvote
         -> *ID
         -> post_id
         -> enabled
         -> user_id
+        belongs_to :post
+        belongs_to :user
+
+      ---User
+        -> *ID
+        -> name
 
       ---Tags
         -> *ID
