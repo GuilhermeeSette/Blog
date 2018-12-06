@@ -49,14 +49,19 @@
       <div class="row">
         <div class="col-md-12 text-right">
           <a ><%= link_to fa_icon(:plus), new_post_path, class: "btn btn-success new"  %></a>
-					<div class="col-md-6 search-bar">
-				    <div class="input-group">
-				      <input type="text" class="form-control" placeholder="Ache um post...">
-				      <span class="input-group-btn">
-								<%= link_to fa_icon(:search), new_post_path, class: "btn btn-default" %>
-				      </span>
-				    </div>
-			  	</div>
+					
+						<div class="row search-bar">
+					    <div class="form-group col-md-6 pull-left">
+	              <%= form_tag(posts_path, method: :get) do %>
+	                <%= text_field_tag 'search', nil, placeholder: 'Digite o título do post...', class: "form-control" %>
+	            </div>
+	                <div class = "pull-left">
+	                  <%= button_tag fa_icon(:search), class: "btn btn-default"%>
+	                </div>
+	              <% end %>
+
+				  	</div>
+
 
         </div>
 

@@ -2,7 +2,11 @@ class PostsController <ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @all_posts = Post.all
+    if params[:search]
+      @all_posts = Post.where("title like ?","%#{params[:search]}%")
+    else
+      @all_posts = Post.all
+    end
   end
 
   def show
