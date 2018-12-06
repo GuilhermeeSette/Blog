@@ -1,19 +1,62 @@
 <p id="notice"><%= notice %></p>
+<div class="text-center">
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+  <div class="container-fluid main main-posts">
+    <div class="row text-center">
+      <div class="col-md-2">
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+        <div class="panel" style="width: 20rem;">
 
-<p>
-  <strong>Autor:</strong>
-  <%= @post.autor %>
-</p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+          <div class="panel-body">
+            <h5 class="font-weight-bold mb-3 upvote-title">Curtidas</h5>
+            <p>199 <a><%= link_to fa_icon(:star), home_index_path %></a></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-10 post text-justify">
+        <div class="">
+          <h2 class="post-title"><%= @post.title %></h2>
+        </div>
+
+        <hr>
+        <div >
+          <p class="post-autor"> <%= @post.autor %></p>
+        </div>
+
+        <div >
+          <p class="post-date"> <%= @post.created_at %></p>
+        </div>
+        <hr>
+        <div class="col-md-8">
+          <div >
+            <p class="post-body"><%= @post.content %></p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel">
+            <h3 >Deixe um comentário</h3>
+            <div class="panel-body">
+              <%= form_with(model: @post, local: true) do |form| %>
+              <div class="form-group">
+                <%= form.text_area :content,rows: 5,class: "form-control" %>
+              </div>
+              <div class="">
+                <%= form.submit 'Comentar', class: "btn btn-primary" %>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+
+
+
+
+  </div>
+</div>

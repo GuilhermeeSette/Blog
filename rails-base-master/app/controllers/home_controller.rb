@@ -1,5 +1,5 @@
 class HomeController < BaseController
   def index
-    @posts = Post.all
+    @posts = Post.take(5).sort()
   end
 end

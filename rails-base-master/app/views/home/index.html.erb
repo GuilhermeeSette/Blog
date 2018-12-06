@@ -45,26 +45,37 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid main">
       <div class="row">
         <div class="col-md-12 text-right">
-          <a ><%= link_to fa_icon('plus'), new_post_path, class: "btn btn-success new"  %></a>
+          <a ><%= link_to fa_icon(:plus), new_post_path, class: "btn btn-success new"  %></a>
+					<div class="col-md-6 search-bar">
+				    <div class="input-group">
+				      <input type="text" class="form-control" placeholder="Ache um post...">
+				      <span class="input-group-btn">
+								<%= link_to fa_icon(:search), new_post_path, class: "btn btn-default" %>
+				      </span>
+				    </div>
+			  	</div>
 
         </div>
 
       </div>
       <% @posts.each do |post| %>
       <div class="row">
-        <div class="col-md-12">
-          <div class="panel text-center">
+        <div class="col-md-12 ">
+          <div class="panel text-justify panel-post">
             <div class="panel-body ">
-              <h3 class=""><%= post.title %></h3>
-              <p class="panel-text "><%= post.content.truncate(20) %></p>
+              <h3 class="panel-title"><%= post.title %></h3>
+              <p class="panel-text content"><%= post.content.truncate(100) %></p>
+							<p class="panel-text autor">Postado por <%= post.autor %></p>
               <a><%= link_to 'Leia mais', post %></a>
             </div>
           </div>
         </div>
       </div>
       <% end %>
+
+			<a><%= link_to 'Ver todos >>', posts_url, class: "text-center" %></a>
 
     </div>
