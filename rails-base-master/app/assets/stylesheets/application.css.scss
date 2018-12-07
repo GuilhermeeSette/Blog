@@ -26,10 +26,7 @@ body{
   margin-top: 2%;
 }
 
-.carousel .item {
-    height: 450px;
-    background-color: #777;
-}
+
 
 .nav-aside{
   float: right;
@@ -62,8 +59,18 @@ hr{
   margin-top: 13%;
 }
 
+.search-bar{
+  margin-top: 5%;
+}
+
 .new{
-  margin: 1%;
+  a{
+    width: 100%;
+  }
+}
+
+body{
+  position: relative;
 }
 .post{
 
@@ -100,5 +107,22 @@ hr{
       font-size: 1em;
       color: #616161;
     }
+  }
+}
+
+
+@media only screen and (max-width: 1092px) {
+  .nav-aside{
+    float: none;
+  }
+
+  .search-bar{
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .search-bar{
+    margin-top: 15%;
   }
 }

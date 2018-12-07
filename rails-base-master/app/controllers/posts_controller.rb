@@ -3,7 +3,7 @@ class PostsController <ApplicationController
 
   def index
     if params[:search]
-      @all_posts = Post.where("title like ?","%#{params[:search]}%").order(:title).page params[:page]
+      @all_posts = Post.where("lower(title) like ?","%#{params[:search].downcase}%").order(:title).page params[:page]
     else
       @all_posts = Post.all.order(:title).page params[:page]
     end

@@ -9,18 +9,21 @@
   </head>
 
   <body>
-    <div class="navbar navbar-default navbar-fixed-top header">
-      <div class="container-fluid ">
-        <div class="navbar-header">
-          <a class="navbar-brand">
-            <%= link_to image_tag("logo_codus.png",  class: "brand d-inline-block align-center" ), home_index_path %>
+    <div class="row">
 
-          </a>
+      <div class="navbar navbar-default navbar-fixed-top header">
+        <div class="container-fluid ">
+          <div class="navbar-header">
+            <a class="navbar-brand">
+              <%= link_to image_tag("logo_codus.png",  class: "brand d-inline-block align-center" ), home_index_path %>
 
+            </a>
+
+          </div>
         </div>
       </div>
     </div>
-    
+
     <%= yield %>
   </body>
 </html>

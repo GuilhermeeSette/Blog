@@ -31,10 +31,29 @@ ol, ul {
 }
 .carousel-inner>.item>a>.slide-image, .carousel-inner>.item>.slide-image, .img-responsive, .thumbnail a>.slide-image, .thumbnail>.slide-image {
     display: block;
-    max-width: 80%;
+    max-width: 60%;
     height: auto;
 }
 .slide-image {
     vertical-align: middle;
     border: 0;
+}
+
+.carousel .item {
+    height: 450px;
+    background-color: #777;
+}
+@media only screen and (max-width: 755px) {
+  .carousel .item {
+      height: 250px;
+
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .carousel .item {
+      display: none;
+
+  }
+
 }
