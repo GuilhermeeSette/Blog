@@ -28,6 +28,8 @@
 
       </div>
       <br>
+
+
       <div class="row clearfix">
 
         <div class="col-md-3 nav-aside text-center">
@@ -50,6 +52,9 @@
             <div class="panel-body ">
               <h3 class="panel-title"><%= post.title %></h3>
               <p class="panel-text content"><%= post.content.truncate(100) %></p>
+              <p>
+                Tags: <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+              </p>
 							<p class="panel-text autor">Postado por <%= post.autor %></p>
               <a><%= link_to 'Leia mais', post %></a>
             </div>

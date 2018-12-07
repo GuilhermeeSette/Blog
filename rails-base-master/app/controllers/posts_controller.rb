@@ -4,6 +4,8 @@ class PostsController <ApplicationController
   def index
     if params[:search]
       @all_posts = Post.where("lower(title) like ?","%#{params[:search].downcase}%").order(:title).page params[:page]
+    elsif params[:tag]
+      @all_posts = Post.tagged_with(params[:tag]).page params[:page]
     else
       @all_posts = Post.all.order(:title).page params[:page]
     end
@@ -60,6 +62,6 @@ class PostsController <ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :content, :autor)
+      params.require(:post).permit(:title, :content, :autor, :tag_list)
     end
 end
