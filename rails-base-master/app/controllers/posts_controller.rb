@@ -3,9 +3,9 @@ class PostsController <ApplicationController
 
   def index
     if params[:search]
-      @all_posts = Post.where("title like ?","%#{params[:search]}%")
+      @all_posts = Post.where("title like ?","%#{params[:search]}%").order(:title).page params[:page]
     else
-      @all_posts = Post.all
+      @all_posts = Post.all.order(:title).page params[:page]
     end
   end
 
@@ -24,7 +24,7 @@ class PostsController <ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to home_index_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
