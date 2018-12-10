@@ -1,9 +1,5 @@
 <p id="notice"><%= notice %></p>
-
     <div class="container-fluid main main-posts">
-
-
-
 					<div class="row search-bar">
 				    <div class="form-group col-md-12 ">
               <%= form_tag(posts_path, method: :get) do %>
@@ -15,60 +11,48 @@
                 </div>
               <% end %>
             </div>
-
 			  	</div>
-
-
-
-
       <div class="row">
         <div class="new col-md-3 pull-right">
           <a ><%= link_to fa_icon(:plus), new_post_path, class: "btn btn-success"  %></a>
         </div>
-
       </div>
       <br>
-
-
       <div class="row clearfix">
-
         <div class="col-md-3 nav-aside text-center">
-
           <div class="panel">
             <div class="panel-header">
-              <h4>Tags</h4>
+              <h4>Popular Tags</h4>
             </div>
-            <ul class="list-group list-group-flush">
-              <% @all_posts.each do |post| %>
-                <li class="list-group-item"><%= post.title %></li>
+            <ul class="list-group text-left">
+              <%= Tag.all.each do |tag| %>
+                <li class="list-group-item">
+                  <span class="badge"><%= Post.count(tag.id) %></span>
+                  <span class="label label-info ">
+                    <%= link_to tag.name, tag_path(tag), class: "tag-label"%>
+                  </span>
+                </li>
               <% end %>
             </ul>
           </div>
         </div>
       <% @all_posts.each do |post| %>
-
         <div class="col-md-8">
           <div class="panel text-justify panel-post">
             <div class="panel-body ">
               <h3 class="panel-title"><%= post.title %></h3>
               <p class="panel-text content"><%= post.content.truncate(100) %></p>
-              <p>
-                Tags: <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-              </p>
+              <span>
+                <%= raw post.tags.map(&:name).map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
+              </span>
 							<p class="panel-text autor">Postado por <%= post.autor %></p>
               <a><%= link_to 'Leia mais', post %></a>
             </div>
           </div>
         </div>
-
       <% end %>
-
     </div>
     <nav>
-
       <%= paginate @all_posts,  outer_window: 3, class: "pagination" %>
     </nav>
-
-
-
     </div>
