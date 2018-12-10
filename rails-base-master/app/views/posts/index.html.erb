@@ -25,11 +25,11 @@
               <h4>Popular Tags</h4>
             </div>
             <ul class="list-group text-left">
-              <%= Tag.all.each do |tag| %>
+              <% Tag.all.each do |tag| %>
                 <li class="list-group-item">
                   <span class="badge"><%= Post.count(tag.id) %></span>
-                  <span class="label label-info ">
-                    <%= link_to tag.name, tag_path(tag), class: "tag-label"%>
+                  <span >
+                    <%=link_to tag.name, tag_path(tag), class: " label label-info tag-label"%>
                   </span>
                 </li>
               <% end %>
@@ -43,7 +43,7 @@
               <h3 class="panel-title"><%= post.title %></h3>
               <p class="panel-text content"><%= post.content.truncate(100) %></p>
               <span>
-                <%= raw post.tags.map(&:name).map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
+                <%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
               </span>
 							<p class="panel-text autor">Postado por <%= post.autor %></p>
               <a><%= link_to 'Leia mais', post %></a>

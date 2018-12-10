@@ -47,7 +47,7 @@
     </div>
     <div class="container-fluid main">
       <div class="row">
-        
+
 
 
 					<div class="row search-bar">
@@ -81,6 +81,9 @@
             <div class="panel-body ">
               <h3 class="panel-title"><%= post.title %></h3>
               <p class="panel-text content"><%= post.content.truncate(100) %></p>
+							<span>
+                <%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
+              </span>
 							<p class="panel-text autor">Postado por <%= post.autor %></p>
               <a><%= link_to 'Leia mais', post %></a>
             </div>

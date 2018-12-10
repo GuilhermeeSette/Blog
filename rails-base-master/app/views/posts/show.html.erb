@@ -34,9 +34,12 @@
           <div >
             <p class="post-body"><%= @post.content %></p>
           </div>
+          <span>
+            <%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
+          </span>
         </div>
 
-      
+
 
         <div class="col-md-6">
           <div class="panel">
