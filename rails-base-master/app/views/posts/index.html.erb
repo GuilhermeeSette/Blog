@@ -1,5 +1,9 @@
-<p id="notice"><%= notice %></p>
+
 <div class="container-fluid main main-posts">
+  <br>
+  <%if notice %>
+    <p id="notice" class="alert alert-success"><%= notice %></p>
+  <% end %>
   <div class="row search-bar">
     <div class="form-group col-md-4 ">
       <%= form_tag(posts_path, method: :get) do %>
@@ -27,7 +31,6 @@
         <ul class="list-group text-left">
           <% Tag.take(8).each do |tag| %>
           <li class="list-group-item">
-
             <span >
               <%=link_to tag.name, tag_path(tag), class: " label label-info tag-label"%>
             </span>
