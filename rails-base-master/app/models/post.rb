@@ -2,10 +2,14 @@ class Post < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   validates :title, :content, :autor, presence: true
-  paginates_per 5
+  paginates_per 6
 
   def self.tagged_with(id)
-    Tag.find_by!(id: id).posts
+    Tag.find_by!(id: id.to_i).posts
+  end
+
+  def self.search_by_tag(name)
+    Tag.where(name: name).posts
   end
 
   def self.tag_counts
