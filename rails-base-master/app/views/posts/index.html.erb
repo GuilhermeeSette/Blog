@@ -25,13 +25,17 @@
           <h4>Popular Tags</h4>
         </div>
         <ul class="list-group text-left">
-          <% Tag.all.each do |tag| %>
+          <% Tag.take(8).each do |tag| %>
           <li class="list-group-item">
+
             <span >
               <%=link_to tag.name, tag_path(tag), class: " label label-info tag-label"%>
             </span>
           </li>
           <% end %>
+          <li class="list-group-item">
+            <a><%= link_to 'Ver mais tags >>', tags_url, class: "text-center" %></a>
+          </li>
         </ul>
       </div>
     </div>

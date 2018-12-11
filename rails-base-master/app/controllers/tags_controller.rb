@@ -1,5 +1,13 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: :show
+  before_action :set_tag, only: [:index, :show]
+  def index
+    if params[:name]
+      @tag = Tag.where("lower(name) like ?","%#{params[:name].downcase}%").order(:name).page params[:page]
+    else
+      @tag = Tag.all.order(:name).page params[:page]
+    end
+  end
+
   def new
     @tag = Tag.new
   end
@@ -16,7 +24,12 @@ class TagsController < ApplicationController
   private
 
     def set_tag
-      @tag = Tag.find(params[:id])
+      if params[:id]
+        @tag = Tag.find(params[:id])
+      else
+        @tag = Tag.all.order(:name)
+      end
+
     end
 
     def tag_params
