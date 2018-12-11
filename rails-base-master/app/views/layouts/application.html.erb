@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Rails Treinamento</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <div class="row">
-
-      <div class="navbar navbar-default navbar-fixed-top header">
-        <div class="container-fluid ">
-          <div class="navbar-header">
-            <a class="navbar-brand">
-              <%= link_to image_tag("logo_codus.png",  class: "brand d-inline-block align-center" ), home_index_path %>
-
-            </a>
-
-          </div>
+<head>
+  <title>Rails Treinamento</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="row">
+    <div class="navbar navbar-default navbar-fixed-top header">
+      <div class="container-fluid ">
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            <%= link_to image_tag("logo_codus.png",  class: "brand d-inline-block align-center" ), home_index_path %>
+          </a>
         </div>
       </div>
     </div>
-
-    <%= yield %>
-  </body>
+  </div>
+  <%= yield %>
+</body>
 </html>
