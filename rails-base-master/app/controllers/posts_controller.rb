@@ -2,13 +2,20 @@ class PostsController <ApplicationController
   before_action :set_post, only: :show
 
   def index
-    if params[:search]
-      @all_posts = Post.where("lower(title) like ?","%#{params[:search].downcase}%").order(:title).page params[:page]
-    elsif params[:tag]
-      @all_posts = Post.tagged_with(params[:tag]).page params[:page]
-    else
-      @all_posts = Post.all.order(:title).page params[:page]
+    @all_posts = Post.all.order(:title)
+
+    if params[:search].present?
+      @all_posts = @all_posts.where("lower(title) like ?","%#{params[:search].downcase}%")
     end
+
+    if params[:tags_ids].present?
+      @all_posts = @all_posts.joins(:taggings)
+        .where(taggings: { tag_id: params[:tags_ids].split(', ') })
+        .group(:id)
+        .having("count(posts.id) = #{params[:tags_ids].split(', ').count}")
+    end
+
+    @all_posts = @all_posts.page(params[:page])
   end
 
   def show
