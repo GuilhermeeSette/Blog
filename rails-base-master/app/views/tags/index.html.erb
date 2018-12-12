@@ -16,7 +16,7 @@
       <% @tag.each do |tag| %>
       <div class="panel panel-default tag col-md-2 pull-left">
         <span >
-          <%=link_to tag.name, tag_path(tag), class: " label label-info tag-label"%>
+          <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids], tag.id].compact.join(', '), search: params[:search]), class: " label label-info tag-label"%>
         </span>
         <p class="panel-body">Utilize esta tag quando a pergunta se refere a algum recurso, informação ou problema relacionado exclusivamente à <%= tag.name %></p>
       </div>

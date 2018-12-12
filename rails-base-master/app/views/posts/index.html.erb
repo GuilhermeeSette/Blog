@@ -17,6 +17,18 @@
       <% end %>
     </div>
   </div>
+  <div class="">
+    <% if params[:tags_ids] %>
+
+        <% @tags_searched.each do |tag|  %>
+        <span >
+          <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids]].delete(tag), search: params[:search]), class: " label label-info tag-label"%>
+        </span>
+        <% end %>
+
+    <% end %>
+
+  </div>
   <div class="row">
     <div class="new col-md-3 pull-right">
       <a ><%= link_to fa_icon(:plus), new_post_path,id: "new-home", class: "btn btn-success"  %></a>
@@ -33,7 +45,7 @@
           <% Tag.take(8).each do |tag| %>
           <li class="list-group-item">
             <span >
-              <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids], tag.id].compact.join(', '), search: params[:search]), class: " label label-info tag-label"%>
+              <%= link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].compact.join(', '), search: params[:search]), class: " label label-info tag-label"%>
             </span>
           </li>
           <% end %>
@@ -50,7 +62,7 @@
           <h3 class="panel-title"><%= post.title %></h3>
           <p class="panel-text content"><%= post.content.truncate(100) %></p>
           <span>
-            <%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
+            <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].compact, search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
           </span>
           <p class="panel-text autor">Postado por <%= post.autor %></p>
           <a><%= link_to 'Leia mais', post %></a>

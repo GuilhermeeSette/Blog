@@ -29,7 +29,6 @@ class TagsController < ApplicationController
       else
         @tag = Tag.all.order(:name)
       end
-
     end
 
     def tag_params
