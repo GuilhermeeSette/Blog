@@ -15,22 +15,22 @@
       <form class="text-center">
         <div class="form-group">
           <%= form.label :Título %>
-          <%= form.text_field :title, class: "form-control" %>
+          <%= form.text_field :title,placeholder: "Título", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= form.label :Conteúdo %>
-          <%= form.text_area :content,rows: 20,class: "form-control" %>
+          <%= form.text_area :content,placeholder: "Conteúdo", rows: 20,class: "form-control" %>
         </div>
         <div class="field">
           <%= form.label :tag_list, "Tags (Separadas por vígula)" %><br />
-          <%= form.text_field :tag_list, class: "form-control" %>
+          <%= form.text_field :tag_list,placeholder: "Tags", class: "form-control" %>
         </div>
         <div class="form-group">
           <%= form.label :Autor %>
-          <%= form.text_field :autor, class: "form-control" %>
+          <%= form.text_field :autor,placeholder: "Autor", class: "form-control" %>
         </div>
         <div class="">
-          <%= form.submit class: "btn btn-info" %>
+          <%= form.submit 'Criar post',value:"Criar post", class: "btn btn-info" %>
         </div>
       </form>
     </div>

@@ -1,3 +1,3 @@
 module PostsHelper
-  #code
+
 end

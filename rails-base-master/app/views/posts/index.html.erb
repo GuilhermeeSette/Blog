@@ -12,17 +12,17 @@
           <%= text_field_tag 'search', params[:search], placeholder: 'Digite o título do post...', class: "form-control " %>
         </div>
         <div class = "pull-left">
-          <%= button_tag fa_icon(:search), class: "btn btn-default"%>
+          <%= button_tag fa_icon(:search), value: "search_title", class: "btn btn-default"%>
         </div>
       <% end %>
     </div>
   </div>
   <div class="">
-    <% if params[:tags_ids] %>
+    <% if params[:tags_ids].present? %>
 
         <% @tags_searched.each do |tag|  %>
         <span >
-          <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids]].delete(tag), search: params[:search]), class: " label label-info tag-label"%>
+          <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search]), class: " label label-info tag-label"%>
         </span>
         <% end %>
 
@@ -55,22 +55,30 @@
         </ul>
       </div>
     </div>
-    <% @all_posts.each do |post| %>
-    <div class="col-md-8">
-      <div class="panel text-justify panel-post">
-        <div class="panel-body ">
-          <h3 class="panel-title"><%= post.title %></h3>
-          <p class="panel-text content"><%= post.content.truncate(100) %></p>
-          <span>
-            <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].compact, search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
-          </span>
-          <p class="panel-text autor">Postado por <%= post.autor %></p>
-          <a><%= link_to 'Leia mais', post %></a>
+
+    <% if @all_posts.empty? %>
+      <div class="col-md-8">
+        <hr>
+        <h1>Não existe nenhum post!</h1>
+      </div>
+    <% else %>
+      <% @all_posts.each do |post| %>
+      <div class="col-md-8">
+        <div class="panel text-justify panel-post">
+          <div class="panel-body ">
+            <h3 class="panel-title"><%= post.title %></h3>
+            <p class="panel-text content"><%= post.content.truncate(100) %></p>
+            <span>
+              <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].compact.join(', '), search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
+            </span>
+            <p class="panel-text autor">Postado por <%= post.autor %></p>
+            <a><%= link_to 'Leia mais', post %></a>
+          </div>
         </div>
       </div>
+    <% end %>
     </div>
     <% end %>
-  </div>
   <nav>
     <%= paginate @all_posts,  outer_window: 3, class: "pagination" %>
   </nav>

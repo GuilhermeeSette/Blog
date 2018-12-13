@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe 'As a user', js: true, type: :feature do
   before(:each) do
+    Tagging.delete_all
     Post.delete_all
+    Tag.delete_all
+
   end
 
   context 'when I am in the post listing page' do
@@ -23,7 +26,13 @@ describe 'As a user', js: true, type: :feature do
     end
 
     context 'when there are no posts' do
-      specify 'I can see the feedback message'
+      specify 'I can see the feedback message' do
+        visit posts_path
+
+        expect(page).to have_content('Não existe nenhum post!')
+      end
     end
   end
+
+
 end
