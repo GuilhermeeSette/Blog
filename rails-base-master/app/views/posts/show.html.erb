@@ -30,19 +30,21 @@
             <%= raw @post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
           </span>
         </div>
+        <div class="col-md-12">
+
+        </div>
         <div class="col-md-6">
+
           <%= form_for(:comment, url: comments_path) do |form| %>
           <div class="container">
             <div class="row form">
               <div class="col-md-8">
                 <form class="text-center">
-
+                  <h2>Deixe um comentário<span><%= fa_icon(:comments) %></span></h2>
                   <div class="form-group">
-                    <%= form.label :Conteúdo %>
                     <%= form.text_area :body,placeholder: "Conteúdo", rows: 5,class: "form-control" %>
                   </div>
                   <div class="form-group">
-                    <%= form.label :Autor %>
                     <%= form.text_field :author,placeholder: "Autor", class: "form-control" %>
                     <%= form.hidden_field :parent_comment_id, value: @post.id %>
                   </div>
@@ -54,33 +56,16 @@
             </div>
           </div>
           <% end %>
-          <% @post.comments.each do |comment|  %>
+          <br>
           <div class="row">
-            <div class="col-md-8">
-              <h3>Comentários</h3>
+            <div class="col-md-12">
+              <h2>Comentários<span class="text-muted pull-right"><%= @post.comments.count %> Comentários</span></h2>
             </div>
           </div>
+
+
           <div class="row">
-            <div class="col-md-2">
-              <div class="thumbnail">
-                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-              </div>
-            </div>
-
-            <div class="col-md-10">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <strong><%= comment.author %></strong> <span class="text-muted"></span>
-                </div>
-                <div class="panel-body">
-                  <%= comment.body %>
-                </div><!-- /panel-body -->
-              </div><!-- /panel panel-default -->
-            </div>
-            <%= render partial: 'comments/form', locals: { comment: @post.comments, parent_id: comment.id } %>
-          <% end %>
-
-
+            <%= render partial: 'comments/comment', collection:  @post.comments %>
         </div>
       </div>
     </div>

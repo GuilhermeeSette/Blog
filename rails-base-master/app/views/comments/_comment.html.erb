@@ -1,0 +1,20 @@
+
+  <div class="col-md-2">
+    <div class="thumbnail">
+      <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+    </div>
+  </div>
+
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong><%= comment.author %></strong> <span class="text-muted"></span>
+      </div>
+      <div class="panel-body">
+        <%= comment.body %>
+      </div><!-- /panel-body -->
+    </div><!-- /panel panel-default -->
+  </div>
+  <%= render partial: 'comments/form', locals: { comment: @post.comments, parent_id: comment.id } %>
+  <br>
+  <%= render partial: 'comments/comment',collection: comment.comments%>
