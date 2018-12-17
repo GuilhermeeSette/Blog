@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
+
   has_many :taggings
+  has_many :comments, foreign_key: :parent_comment_id
   has_many :tags, through: :taggings
   validates :title, :content, :autor, presence: true
   paginates_per 10
