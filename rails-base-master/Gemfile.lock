@@ -59,9 +59,6 @@ GEM
     chromedriver-helper (1.1.0)
       archive-zip (~> 0.7.0)
       nokogiri (~> 1.6)
-    closure_tree (7.0.0)
-      activerecord (>= 4.2.10)
-      with_advisory_lock (>= 4.0.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -238,6 +235,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    time_difference (0.7.0)
+      activesupport (~> 5.1)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
@@ -254,8 +253,6 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    with_advisory_lock (4.0.0)
-      activerecord (>= 4.2)
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -266,7 +263,6 @@ DEPENDENCIES
   byebug
   capybara (= 2.14.0)
   chromedriver-helper
-  closure_tree
   coffee-rails (~> 4.2)
   font-awesome-rails
   jbuilder (~> 2.5)
@@ -285,6 +281,7 @@ DEPENDENCIES
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
+  time_difference
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)

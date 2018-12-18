@@ -2,16 +2,17 @@ class PostsController <ApplicationController
   before_action :set_post, only: :show
 
   def index
-    @all_posts = Post.all.order(:title)
+    @all_posts = Post.all.order(:created_at)
     if params[:search].present?
       @all_posts = @all_posts.where("lower(title) like ?","%#{params[:search].downcase}%")
     end
     if params[:tags_ids].present?
+      parameters = params[:tags_ids].split(', ').uniq
       @tags_searched = Tag.where(id: params[:tags_ids].split(', '))
       @all_posts = @all_posts.joins(:taggings)
-        .where(taggings: { tag_id: params[:tags_ids].split(', ') })
+        .where(taggings: { tag_id: parameters })
         .group(:id)
-        .having("count(posts.id) = #{params[:tags_ids].split(', ').count}")
+        .having("count(posts.id) = #{parameters.count}")
     end
     @all_posts = @all_posts.page(params[:page])
   end

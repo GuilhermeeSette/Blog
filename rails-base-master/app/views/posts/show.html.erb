@@ -19,7 +19,7 @@
           <p class="post-autor"> <%= @post.autor %></p>
         </div>
         <div >
-          <p class="post-date"> <%= @post.created_at %></p>
+          <p class="post-date"><%= TimeDifference.between(@post.created_at, Time.now).in_days.round%> dias atrás</p>
         </div>
         <hr>
         <div class="col-md-8">
@@ -58,17 +58,19 @@
           <% end %>
           <br>
           <div class="row">
-            <div class="col-md-12">
-              <h2>Comentários<span class="text-muted pull-right"><%= @post.comments.count %> Comentários</span></h2>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Comentários<span class="text-muted pull-right"><%= @post.comments.count %> Comentários</span></h2>
+                </div>
+              </div>
+              <ul id="comments">
+                <%= render partial: 'comments/comment', collection:  @post.comments %>
+              </ul>
             </div>
           </div>
-
-
-          <div class="row">
-            <%= render partial: 'comments/comment', collection:  @post.comments %>
         </div>
       </div>
+      <hr>
     </div>
-    <hr>
   </div>
-</div>

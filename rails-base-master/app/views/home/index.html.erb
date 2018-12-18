@@ -72,6 +72,7 @@
 							<%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
 						</span>
 						<p class="panel-text autor">Postado por <%= post.autor %></p>
+						<p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
 						<a><%= link_to 'Leia mais', post %></a>
 					</div>
 				</div>

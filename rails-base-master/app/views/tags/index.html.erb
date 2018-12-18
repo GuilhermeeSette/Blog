@@ -18,7 +18,7 @@
         <span >
           <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids], tag.id].compact.join(', '), search: params[:search]), class: " label label-info tag-label"%>
         </span>
-        <p class="panel-body">Utilize esta tag quando a pergunta se refere a algum recurso, informação ou problema relacionado exclusivamente à <%= tag.name %></p>
+        <p class="panel-body"><%="#{@description.truncate(80)}"%></p>
       </div>
       <% end %>
     </div>

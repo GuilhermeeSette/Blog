@@ -23,7 +23,11 @@
         <% @tags_searched.each do |tag|  %>
         <span >
           <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search]), class: " label label-info tag-label"%>
+          <span>
+            <%= link_to fa_icon(:times), posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search])%>
+          </span>
         </span>
+
         <% end %>
 
     <% end %>
@@ -72,6 +76,7 @@
               <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].reject(&:blank?).compact.join(', '), search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
             </span>
             <p class="panel-text autor">Postado por <%= post.autor %></p>
+            <p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
             <a><%= link_to 'Leia mais', post %></a>
           </div>
         </div>

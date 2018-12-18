@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:index, :show]
   def index
+    @description = "Utilize esta tag quando a pergunta se refere a alguma informação ou problema relacionado exclusivamente à"
     if params[:name]
       @tag = Tag.where("lower(name) like ?","%#{params[:name].downcase}%").order(:name).page params[:page]
     else
