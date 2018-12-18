@@ -2,7 +2,7 @@ class PostsController <ApplicationController
   before_action :set_post, only: :show
 
   def index
-    @all_posts = Post.all.order(:created_at)
+    @all_posts = Post.all.order(created_at: :desc)
     if params[:search].present?
       @all_posts = @all_posts.where("lower(title) like ?","%#{params[:search].downcase}%")
     end

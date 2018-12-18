@@ -1,1 +1,1 @@
-$('#comments').html("<%= escape_javascript render partial: 'comments/comment', collection:  @post.comments %>");
+$('#comments').html("<%= j(render partial: 'comments/form', locals: { comment: @post.comments, parent_id: comment.id })%>");
