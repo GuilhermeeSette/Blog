@@ -2,33 +2,33 @@
 <div class="container-fluid main main-posts">
   <br>
   <%if notice %>
-    <p id="notice" class="alert alert-success"><%= notice %></p>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
   <% end %>
   <div class="row search-bar">
     <div class="form-group col-md-4 ">
       <%= form_tag(posts_path, method: :get) do %>
-        <%= hidden_field_tag :tags_ids, params[:tags_ids] %>
-        <div class="col-md-8 pull-left">
-          <%= text_field_tag 'search', params[:search], placeholder: 'Digite o título do post...', class: "form-control " %>
-        </div>
-        <div class = "pull-left">
-          <%= button_tag fa_icon(:search), value: "search_title", class: "btn btn-default"%>
-        </div>
+      <%= hidden_field_tag :tags_ids, params[:tags_ids] %>
+      <div class="col-md-8 pull-left">
+        <%= text_field_tag 'search', params[:search], placeholder: 'Digite o título do post...', class: "form-control " %>
+      </div>
+      <div class = "pull-left">
+        <%= button_tag fa_icon(:search), value: "search_title", class: "btn btn-default"%>
+      </div>
       <% end %>
     </div>
   </div>
   <div class="">
     <% if params[:tags_ids].present? %>
 
-        <% @tags_searched.each do |tag|  %>
-        <span >
-          <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search]), class: " label label-info tag-label"%>
-          <span>
-            <%= link_to fa_icon(:times), posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search])%>
-          </span>
-        </span>
+    <% @tags_searched.each do |tag|  %>
+    <span >
+      <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search]), class: " label label-info tag-label"%>
+      <span>
+        <%= link_to fa_icon(:times), posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search])%>
+      </span>
+    </span>
 
-        <% end %>
+    <% end %>
 
     <% end %>
 
@@ -61,29 +61,29 @@
     </div>
 
     <% if @all_posts.empty? %>
-      <div class="col-md-8">
-        <hr>
-        <h1>Não existe nenhum post!</h1>
-      </div>
+    <div class="col-md-8">
+      <hr>
+      <h1>Não existe nenhum post!</h1>
+    </div>
     <% else %>
-      <% @all_posts.each do |post| %>
-      <div class="col-md-8">
-        <div class="panel text-justify panel-post">
-          <div class="panel-body ">
-            <h3 class="panel-title"><%= post.title %></h3>
-            <p class="panel-text content"><%= post.content.truncate(100) %></p>
-            <span>
-              <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].reject(&:blank?).compact.join(', '), search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
-            </span>
-            <p class="panel-text autor">Postado por <%= post.autor %></p>
-            <p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
-            <a><%= link_to 'Leia mais', post %></a>
-          </div>
+    <% @all_posts.each do |post| %>
+    <div class="col-md-8">
+      <div class="panel text-justify panel-post">
+        <div class="panel-body ">
+          <h3 class="panel-title"><%= post.title %></h3>
+          <p class="panel-text content"><%= post.content.truncate(100) %></p>
+          <span>
+            <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].reject(&:blank?).compact.join(', '), search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
+          </span>
+          <p class="panel-text autor">Postado por <%= post.autor %></p>
+          <p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
+          <a><%= link_to 'Leia mais', post %></a>
         </div>
       </div>
-    <% end %>
     </div>
     <% end %>
+  </div>
+  <% end %>
   <nav>
     <%= paginate @all_posts,  outer_window: 3, class: "pagination" %>
   </nav>

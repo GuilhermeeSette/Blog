@@ -24,15 +24,15 @@ class TagsController < ApplicationController
 
   private
 
-    def set_tag
-      if params[:id]
-        @tag = Tag.find(params[:id])
-      else
-        @tag = Tag.all.order(:name)
-      end
+  def set_tag
+    if params[:id]
+      @tag = Tag.find(params[:id])
+    else
+      @tag = Tag.all.order(:name)
     end
+  end
 
-    def tag_params
-      params.require(:tag).permit(:name)
-    end
+  def tag_params
+    params.require(:tag).permit(:name)
+  end
 end

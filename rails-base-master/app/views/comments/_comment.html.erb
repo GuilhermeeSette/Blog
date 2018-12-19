@@ -1,25 +1,25 @@
 
-  <div class="col-md-2">
-    <div class="thumbnail">
-      <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-    </div>
+<div class="col-md-2">
+  <div class="thumbnail">
+    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
   </div>
+</div>
 
-  <li class="col-md-10">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <strong><%= comment.author %></strong> <span class="text-muted pull-right">Há <%= TimeDifference.between(comment.created_at, Time.now).in_hours.round %> horas</span>
-      </div>
-      <div class="panel-body">
-        <%= comment.body %>
-      </div><!-- /panel-body -->
-    </div><!-- /panel panel-default -->
-    <%= render partial: 'comments/form', locals: { comment: @post.comments, parent_id: comment.id } %>
-    <br>
-    <ul>
-      <li>
+<li class="col-md-10">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <strong><%= comment.author %></strong> <span class="text-muted pull-right">Há <%= TimeDifference.between(comment.created_at, Time.now).in_hours.round %> horas</span>
+    </div>
+    <div class="panel-body">
+      <%= comment.body %>
+    </div><!-- /panel-body -->
+  </div><!-- /panel panel-default -->
+  <%= render partial: 'comments/form', locals: { comment: @post.comments, parent_id: comment.id } %>
+  <br>
+  <ul>
+    <li>
 
-        <%= render partial: 'comments/comment',collection: comment.comments%>
-      </li>
-    </ul>
-  </li>
+      <%= render partial: 'comments/comment',collection: comment.comments%>
+    </li>
+  </ul>
+</li>

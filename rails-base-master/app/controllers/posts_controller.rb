@@ -10,9 +10,9 @@ class PostsController <ApplicationController
       parameters = params[:tags_ids].split(', ').uniq
       @tags_searched = Tag.where(id: params[:tags_ids].split(', '))
       @all_posts = @all_posts.joins(:taggings)
-        .where(taggings: { tag_id: parameters })
-        .group(:id)
-        .having("count(posts.id) = #{parameters.count}")
+      .where(taggings: { tag_id: parameters })
+      .group(:id)
+      .having("count(posts.id) = #{parameters.count}")
     end
     @all_posts = @all_posts.page(params[:page])
   end
