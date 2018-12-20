@@ -14,7 +14,8 @@
       <%= comment.body %>
     </div><!-- /panel-body -->
   </div><!-- /panel panel-default -->
-  <%= render partial: 'comments/form', locals: { comment: @post.comments, parent_id: comment.id } %>
+  
+  <%= render partial: 'comments/form', locals: { parent_id: comment.id } %>
   <br>
   <ul>
     <li>

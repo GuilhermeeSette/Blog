@@ -33,7 +33,7 @@
         <div class="col-md-12">
         </div>
         <div class="col-md-6">
-          <%= form_for(:comment, url: comments_path) do |form| %>
+          <%= form_for(:comment, url: comments_path, remote: true) do |form| %>
           <div class="container">
             <div class="row form">
               <div class="col-md-8">

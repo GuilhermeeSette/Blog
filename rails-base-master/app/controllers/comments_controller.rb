@@ -6,12 +6,15 @@ class CommentsController < BaseController
 
   def create
     @comment = Comment.new(comment_params)
+    if @comment.author.empty?
+      @comment.author = 'Anonymous'
+    end
     respond_to do |format|
       if @comment.save
-        format.js
         format.html{ redirect_back fallback_location: root_path, notice: 'Comentário realizado.' }
+        format.js
       else
-        render :new
+        format.html { render :new }
       end
     end
   end

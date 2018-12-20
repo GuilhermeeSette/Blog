@@ -1,5 +1,5 @@
 class PostsController <ApplicationController
-  before_action :set_post, only: :show
+  before_action :set_post, only: [:show, :create]
 
   def index
     @all_posts = Post.all.order(created_at: :desc)
