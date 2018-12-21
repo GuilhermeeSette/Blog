@@ -3,12 +3,6 @@
   <div class="container-fluid main main-posts">
     <div class="row text-center">
       <div class="col-md-2">
-        <div class="panel" style="width: 20rem;">
-          <div class="panel-body">
-            <h5 class="font-weight-bold mb-3 upvote-title">Post</h5>
-            <p class= "book-icon"><%= fa_icon('book') %></p>
-          </div>
-        </div>
       </div>
       <div class="col-md-10 post text-justify">
         <div class="">
@@ -30,17 +24,16 @@
             <%= raw @post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
           </span>
         </div>
-        <div class="col-md-12">
+        <div class="col-md-10">
         </div>
         <div class="col-md-6">
           <%= form_for(:comment, url: comments_path, remote: true) do |form| %>
-          <div class="container">
             <div class="row form">
-              <div class="col-md-8">
+              <div class="col-md-10">
                 <form class="text-center">
                   <h2>Deixe um comentário<span><%= fa_icon(:comments) %></span></h2>
                   <div class="form-group">
-                    <%= form.text_area :body,placeholder: "Conteúdo", rows: 5,class: "form-control" %>
+                    <%= form.text_area :body,placeholder: "Conteúdo" , rows: 5, class: "form-control" %>
                   </div>
                   <div class="form-group">
                     <%= form.text_field :author,placeholder: "Autor", class: "form-control" %>
@@ -52,11 +45,8 @@
                 </form>
               </div>
             </div>
-          </div>
           <% end %>
           <br>
-          <div class="row">
-            <div class="container">
               <div class="row">
                 <div class="col-md-12">
                   <h2>Comentários<span class="text-muted pull-right"><%= @post.comments.count %> Comentários</span></h2>
@@ -65,8 +55,6 @@
               <ul id="comments">
                 <%= render partial: 'comments/comment', collection:  @post.comments %>
               </ul>
-            </div>
-          </div>
         </div>
       </div>
       <hr>
