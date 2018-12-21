@@ -43,45 +43,39 @@
 	</a>
 </div>
 <div class="container-fluid main">
-
-		<div class="row search-bar">
-			<div class="form-group col-md-4 ">
-				<%= form_tag(posts_path, method: :get) do %>
-				<div class="col-md-8 pull-left">
-					<%= text_field_tag 'search', nil, placeholder: 'Digite o título do post...', class: "form-control " %>
-				</div>
-				<div class = "pull-left">
-					<%= button_tag fa_icon(:search), class: "btn btn-default"%>
-				</div>
-				<% end %>
+	<div class="row search-bar">
+		<div class="form-group col-md-4 ">
+			<%= form_tag(posts_path, method: :get) do %>
+			<div class="col-md-8 pull-left">
+				<%= text_field_tag 'search', nil, placeholder: 'Digite o título do post...', class: "form-control " %>
+			</div>
+			<div class = "pull-left">
+				<%= button_tag fa_icon(:search), class: "btn btn-default"%>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="new col-md-3 pull-right">
+		<a ><%= link_to fa_icon(:plus), new_post_path, class: "btn btn-success"  %></a>
+	</div>
+	<% @posts.each do |post| %>
+	<div class="col-md-12 ">
+		<div class="panel text-justify panel-post">
+			<div class="panel-body ">
+				<h3 class="panel-title"><%= post.title %></h3>
+				<p class="panel-text content"><%= post.content.truncate(100) %></p>
+				<span>
+					<%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
+				</span>
+				<p class="panel-text autor">Postado por <%= post.autor %></p>
+				<p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
+				<a><%= link_to 'Leia mais', post %></a>
 			</div>
 		</div>
-
-			<div class="new col-md-3 pull-right">
-				<a ><%= link_to fa_icon(:plus), new_post_path, class: "btn btn-success"  %></a>
-			</div>
-
-		<% @posts.each do |post| %>
-
-			<div class="col-md-12 ">
-				<div class="panel text-justify panel-post">
-					<div class="panel-body ">
-						<h3 class="panel-title"><%= post.title %></h3>
-						<p class="panel-text content"><%= post.content.truncate(100) %></p>
-						<span>
-							<%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
-						</span>
-						<p class="panel-text autor">Postado por <%= post.autor %></p>
-						<p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
-						<a><%= link_to 'Leia mais', post %></a>
-					</div>
-				</div>
-			</div>
-
-		<% end %>
-		<div class="row">
-			<div class="col-md-4">
-
-				<a><%= link_to 'Ver todos >>', posts_url, class: "text-center" %></a>
-			</div>
+	</div>
+	<% end %>
+	<div class="row">
+		<div class="col-md-4">
+			<a><%= link_to 'Ver todos >>', posts_url, class: "text-center" %></a>
 		</div>
+	</div>
