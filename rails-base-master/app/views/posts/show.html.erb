@@ -49,7 +49,7 @@
           <br>
               <div class="row">
                 <div class="col-md-12">
-                  <h2>Comentários<span class="text-muted pull-right"><%= @post.comments.count %> Comentários</span></h2>
+                  <h2>Comentários<span class="text-muted pull-right"><%= pluralize(@post.comments.count, "Comentário") %></span></h2>
                 </div>
               </div>
               <ul id="comments">

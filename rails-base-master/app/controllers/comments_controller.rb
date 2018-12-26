@@ -1,4 +1,5 @@
 class CommentsController < BaseController
+  skip_before_action :authorize
   before_action :set_comment, only: :show
   def new
     @comment = Comment.new

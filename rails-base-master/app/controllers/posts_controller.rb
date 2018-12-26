@@ -1,4 +1,5 @@
 class PostsController <ApplicationController
+  skip_before_action :authorize, only: [:show]
   before_action :set_post, only: [:show, :create]
 
   def index
@@ -36,7 +37,9 @@ class PostsController <ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    if params[:id]
+      @post = Post.find(params[:id])
+    end
   end
 
   def post_params

@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+  skip_before_action :authorize
   before_action :set_tag, only: [:index, :show]
   def index
     @description = "Utilize esta tag quando a pergunta se refere a alguma informação ou problema relacionado exclusivamente à"
