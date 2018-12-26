@@ -44,7 +44,9 @@
 </div>
 <div class="container-fluid main">
 	<%if notice %>
-	<p id="notice" class="alert alert-danger"><%= notice %></p>
+		<p id="notice" class="alert alert-danger">
+			<%= notice %>
+		</p>
 	<% end %>
 	<div class="row search-bar">
 		<div class="form-group col-md-4 ">
@@ -68,7 +70,7 @@
 				<h3 class="panel-title"><%= post.title %></h3>
 				<p class="panel-text content"><%= post.content.truncate(100) %></p>
 				<span>
-					<%= raw post.tags.map { |tag| link_to tag.name, tag_path(tag), class: "label label-info tag-label" }.join(' ') %>
+					<%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].reject(&:blank?).compact.join(', '), search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
 				</span>
 				<p class="panel-text autor">Postado por <%= post.autor %></p>
 				<p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>

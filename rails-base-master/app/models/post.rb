@@ -19,8 +19,8 @@ class Post < ApplicationRecord
   end
 
   def tag_list=(names)
-    self.tags = self.tags | names.split(',').map do |name|
-      Tag.where(name: name.strip.downcase).first_or_create!
+    self.tags = names.split(',').map do |name|
+      Tag.where(name: name.strip).first_or_create!
     end
   end
 
