@@ -15,6 +15,21 @@
             <%= link_to 'Codditus', home_index_path,  class: "brand d-inline-block align-center" %>
           </a>
         </div>
+
+        <% if session[:user_id].nil? %>
+          <a>
+            <%= link_to 'Sig up', new_user_path,  class: "btn btn-success text-uppercase nav-link pull-right" %>
+          </a>
+          <a>
+            <%= link_to 'Sig in', login_url,  class: " btn btn-primary text-uppercase nav-link pull-right" %>
+          </a>
+        <% else %>
+        <a>
+          <%= link_to 'Sig out', sessions_destroy_path,  class: "btn btn-success text-uppercase nav-link pull-right" %>
+        </a>
+        <% end %>
+
+
       </div>
     </div>
   </div>
