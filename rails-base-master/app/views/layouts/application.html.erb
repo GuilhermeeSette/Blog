@@ -18,14 +18,14 @@
 
         <% if session[:user_id].nil? %>
           <a>
-            <%= link_to 'Sig up', new_user_path,  class: "btn btn-success text-uppercase nav-link pull-right" %>
+            <%= link_to 'Sign up', new_user_path,  class: "btn btn-success btn-lg text-uppercase nav-link pull-right" %>
           </a>
           <a>
-            <%= link_to 'Sig in', login_url,  class: " btn btn-primary text-uppercase nav-link pull-right" %>
+            <%= link_to 'Sign in', login_url,  class: " btn btn-primary btn-lg text-uppercase nav-link pull-right" %>
           </a>
         <% else %>
         <a>
-          <%= link_to 'Sig out', sessions_destroy_path,  class: "btn btn-success text-uppercase nav-link pull-right" %>
+          <%= link_to 'Sign out', sessions_destroy_path,  class: "btn btn-danger btn-lg text-uppercase nav-link pull-right" %>
         </a>
         <% end %>
 

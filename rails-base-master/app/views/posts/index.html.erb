@@ -76,7 +76,11 @@
             <%= raw post.tags.map { |tag| link_to tag.name.to_s, posts_path(tags_ids: [params[:tags_ids], tag.id].reject(&:blank?).compact.join(', '), search: params[:search]), class: " label label-info tag-label" }.join(' ') %>
           </span>
           <p class="panel-text autor">Postado por <%= post.autor %></p>
-          <p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dias atrás</p>
+          <% if TimeDifference.between(post.created_at, Time.now).in_days.round == 0 %>
+            <p class="panel-text autor">Postado hoje</p>
+          <% else %>
+            <p class="panel-text autor"><%= TimeDifference.between(post.created_at, Time.now).in_days.round%> dia(s) atrás</p>
+          <% end %>
           <a><%= link_to 'Leia mais', post %></a>
         </div>
       </div>

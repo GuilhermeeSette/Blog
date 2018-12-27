@@ -13,7 +13,11 @@
           <p class="post-autor"> <%= @post.autor %></p>
         </div>
         <div >
-          <p class="post-date"><%= TimeDifference.between(@post.created_at, Time.now).in_days.round%> dias atrás</p>
+          <% if TimeDifference.between(@post.created_at, Time.now).in_days.round == 0 %>
+            <p class="panel-text autor">Postado hoje</p>
+          <% else %>
+            <p class="panel-text autor"><%= TimeDifference.between(@post.created_at, Time.now).in_days.round%> dia(s) atrás</p>
+          <% end %>
         </div>
         <hr>
         <div class="col-md-8">
@@ -35,10 +39,7 @@
                   <div class="form-group">
                     <%= form.text_area :body,placeholder: "Conteúdo" , rows: 5, class: "form-control" %>
                   </div>
-                  <div class="form-group">
-                    <%= form.text_field :author,placeholder: "Autor", class: "form-control" %>
                     <%= form.hidden_field :parent_comment_id, value: @post.id %>
-                  </div>
                   <div class="">
                     <%= form.submit 'Comentar',value:"Comentar", class: "btn btn-info" %>
                   </div>
