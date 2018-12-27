@@ -1,35 +1,22 @@
-
-
-  <%= form_tag do %>
-  <fieldset>
-    <div class="container">
-
-      <div class="row form login">
-        <%if notice %>
-          <p id="notice" class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <div class="col-md-12">
-          <br>
-          <% if flash[:alert] %>
-          <p id="notice" class="alert alert-danger"><%= flash[:alert] %></p>
-          <% end %>
-          <form class="text-center">
-            <legend>Login</legend>
-            <div class="form-group">
-              <%= label_tag :name, 'Usuário:' %>
-              <%= text_field_tag :name, params[:name], class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <%= label_tag :password, 'Senha:' %>
-              <%= password_field_tag :password, params[:password], class: "form-control" %>
-            </div>
-            <div class="form-group">
-              <br>
-              <%= submit_tag "Entrar", class: "btn btn-info" %>
-            </div>
-          </fieldset>
-          <% end %>
-        </div>
-      </div>
-
-    </div>
+<%= form_tag do %>
+<div class="container form">
+  <%if notice %>
+  <p id="notice" class="alert alert-warning"><%= notice %></p>
+  <% end %>
+  <div class="card card-container">
+    <% if flash[:alert] %>
+    <p id="notice" class="alert alert-danger"><%= flash[:alert] %></p>
+    <% end %>
+    <img id="profile-img" class="profile-img-card" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <form class="form-signin">
+      <span id="reauth-email" class="reauth-email"></span>
+      <%= text_field_tag :name, params[:name],placeholder: "Nome...", class: "form-control input inputField" %>
+      <br>
+      <%= password_field_tag :password, params[:password],placeholder: "Senha...", class: "form-control input inputPassword" %>
+      <br>
+      <%= submit_tag "Entrar", class: "btn btn-success btn-lg button" %>
+    </form>
+    <% end %>
+  </div>
+</div>

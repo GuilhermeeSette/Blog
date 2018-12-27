@@ -54,10 +54,10 @@ ol, ul {
   height: 450px;
   background-color: #777;
 }
-@media only screen and (max-width: 755px) {
+
+@media only screen and (max-width: 768px) {
   .carousel .item {
     height: 250px;
-
   }
 }
 

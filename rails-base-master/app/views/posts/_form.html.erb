@@ -4,7 +4,7 @@
   <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
   <ul>
     <% post.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+    <li class="alert alert-danger"><%= message %></li>
     <% end %>
   </ul>
 </div>
@@ -26,8 +26,7 @@
           <%= form.text_field :tag_list,placeholder: "Tags", class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= form.label :Autor %>
-          <%= form.text_field :autor,placeholder: "Autor", class: "form-control" %>
+          <%= form.hidden_field :autor, value: User.find(session[:user_id]).name %>
         </div>
         <div class="">
           <%= form.submit 'Criar post',value:"Criar post", class: "btn btn-info" %>
