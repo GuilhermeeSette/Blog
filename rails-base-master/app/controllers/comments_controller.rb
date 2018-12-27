@@ -6,11 +6,14 @@ class CommentsController < BaseController
   end
 
   def create
+    @post = Post.find_by(params[:parent_comment_id])
     @comment = Comment.new(comment_params)
-    @comment.author = User.find(session[:user_id]).name
-    if @comment.author.empty?
+    if session[:user_id].nil?
       @comment.author = 'Anonymous'
+    else
+      @comment.author = User.find(session[:user_id]).name
     end
+
     respond_to do |format|
       if @comment.save
         format.html{ redirect_back fallback_location: root_path, notice: 'Comentário realizado.' }
