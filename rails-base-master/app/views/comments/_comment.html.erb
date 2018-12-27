@@ -1,29 +1,25 @@
-
 <div class="col-md-2">
   <div class="thumbnail">
     <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
   </div>
 </div>
-
 <li class="col-md-10">
   <div class="panel panel-default">
     <div class="panel-heading">
       <% if TimeDifference.between(comment.created_at, Time.now).in_hours.round == 0 %>
       <strong><%= comment.author %></strong> <span class="text-muted pull-right">Há <%= TimeDifference.between(comment.created_at, Time.now).in_minutes.round %> minutos</span>
       <% else %>
-        <strong><%= comment.author %></strong> <span class="text-muted pull-right">Há <%= TimeDifference.between(comment.created_at, Time.now).in_hours.round %> horas</span>
+      <strong><%= comment.author %></strong> <span class="text-muted pull-right">Há <%= TimeDifference.between(comment.created_at, Time.now).in_hours.round %> horas</span>
       <% end %>
     </div>
     <div class="panel-body">
       <%= comment.body %>
-    </div><!-- /panel-body -->
-  </div><!-- /panel panel-default -->
-
+    </div>
+  </div>
   <%= render partial: 'comments/form', locals: { parent_id: comment.id } %>
   <br>
   <ul>
     <li>
-
       <%= render partial: 'comments/comment',collection: comment.comments%>
     </li>
   </ul>

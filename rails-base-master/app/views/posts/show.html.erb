@@ -14,9 +14,9 @@
         </div>
         <div >
           <% if TimeDifference.between(@post.created_at, Time.now).in_days.round == 0 %>
-            <p class="panel-text autor">Postado hoje</p>
+          <p class="panel-text autor">Postado hoje</p>
           <% else %>
-            <p class="panel-text autor"><%= TimeDifference.between(@post.created_at, Time.now).in_days.round%> dia(s) atrás</p>
+          <p class="panel-text autor"><%= TimeDifference.between(@post.created_at, Time.now).in_days.round%> dia(s) atrás</p>
           <% end %>
         </div>
         <hr>
@@ -32,30 +32,30 @@
         </div>
         <div class="col-md-6">
           <%= form_for(:comment, url: comments_path, remote: true) do |form| %>
-            <div class="row form">
-              <div class="col-md-10">
-                <form class="text-center">
-                  <h2>Deixe um comentário<span><%= fa_icon(:comments) %></span></h2>
-                  <div class="form-group">
-                    <%= form.text_area :body,placeholder: "Conteúdo" , rows: 5, class: "form-control" %>
-                  </div>
-                    <%= form.hidden_field :parent_comment_id, value: @post.id %>
-                  <div class="">
-                    <%= form.submit 'Comentar',value:"Comentar", class: "btn btn-info" %>
-                  </div>
-                </form>
-              </div>
+          <div class="row form">
+            <div class="col-md-10">
+              <form class="text-center">
+                <h2>Deixe um comentário<span><%= fa_icon(:comments) %></span></h2>
+                <div class="form-group">
+                  <%= form.text_area :body,placeholder: "Conteúdo" , rows: 5, class: "form-control" %>
+                </div>
+                <%= form.hidden_field :parent_comment_id, value: @post.id %>
+                <div class="">
+                  <%= form.submit 'Comentar',value:"Comentar", class: "btn btn-info" %>
+                </div>
+              </form>
             </div>
+          </div>
           <% end %>
           <br>
-              <div class="row">
-                <div class="col-md-12">
-                  <h2>Comentários<span class="text-muted pull-right"><%= pluralize(@post.comments.count, "Comentário") %></span></h2>
-                </div>
-              </div>
-              <ul id="comments">
-                <%= render partial: 'comments/comment', collection:  @post.comments %>
-              </ul>
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Comentários<span class="text-muted pull-right"><%= pluralize(@post.comments.count, "Comentário") %></span></h2>
+            </div>
+          </div>
+          <ul id="comments">
+            <%= render partial: 'comments/comment', collection:  @post.comments %>
+          </ul>
         </div>
       </div>
       <hr>

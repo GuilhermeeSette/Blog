@@ -5,61 +5,45 @@
 @import 'tags';
 @import 'users';
 @import 'comments';
-
 *{
   font-family: Crimson;
-
 }
-
 .book-icon{
   font-size: 34px;
 }
-
 .tag-label{
   text-decoration: none;
   color: black;
   font-size: 1em;
 }
-
-
-
 .brand{
   font-size: 2.5em;
   color: white;
-
 }
 .brand:link, .brand:visited {
-text-decoration: none
+  text-decoration: none
 }
 .brand:hover {
-text-decoration: none;
-color: white;
+  text-decoration: none;
+  color: white;
 }
 .brand:active {
-text-decoration: none
+  text-decoration: none
 }
 .navbar{
-
   background-color: #f5f5f5;
   border: 0;
   .btn{
     margin-right: 0.3%;
   }
 }
-
 body, html {
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(227,227,227,1) 0%, rgba(184,204,184,1) 23%, rgba(219,219,219,1) 59%, rgba(255,255,255,1) 100%);
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(227,227,227,1) 0%, rgba(184,204,184,1) 23%, rgba(219,219,219,1) 59%, rgba(255,255,255,1) 100%);
 }
-
-
-
 .main-posts{
   margin-top: 2%;
 }
-
-
-
 .nav-aside{
   float: right;
   ul li{
@@ -68,49 +52,38 @@ body, html {
   .panel{
     background: #00796b;
   }
-
 }
-
-
 .form{
   margin-top: 10%;
 }
-
 hr{
   max-width: 90%;
 }
 .header{
   background:#00796b;
 }
-
 .main{
   background: white;
 }
-
 .upvote-title{
   margin-top: 13%;
 }
-
 .search-bar{
   margin-top: 5%;
 }
-
 .new{
   a{
     width: 100%;
   }
 }
-
 body{
   position: relative;
 }
 .post{
-
   .post-title{
     font-size: 3em;
     color: #212121;
   }
-
   .post-autor{
     font-size: 1.5em;
     color: #616161;
@@ -141,22 +114,17 @@ body{
     }
   }
 }
-
-
 .field_with_errors {
   border:2px solid red;
-
 }
 @media only screen and (max-width: 1092px) {
   .nav-aside{
     float: none;
   }
-
   .search-bar{
     margin-top: 10%;
   }
 }
-
 @media only screen and (max-width: 768px) {
   .navbar{
     .btn{
@@ -175,7 +143,6 @@ body{
     }
   }
 }
-
 @media only screen and (max-width: 425px) {
   .search-bar{
     margin-top: 15%;

@@ -1,4 +1,3 @@
-
 <div class="container-fluid main main-posts">
   <br>
   <%if notice %>
@@ -19,7 +18,6 @@
   </div>
   <div class="">
     <% if params[:tags_ids].present? %>
-
     <% @tags_searched.each do |tag|  %>
     <span >
       <%= link_to tag.name, posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search]), class: " label label-info tag-label"%>
@@ -27,11 +25,8 @@
         <%= link_to fa_icon(:times), posts_path(tags_ids: [params[:tags_ids].split(', ') - [tag.id.to_s]].compact.join(', ') , search: params[:search])%>
       </span>
     </span>
-
     <% end %>
-
     <% end %>
-
   </div>
   <div class="row">
     <div class="new col-md-3 pull-right">
@@ -59,7 +54,6 @@
         </ul>
       </div>
     </div>
-
     <% if @all_posts.empty? %>
     <div class="col-md-8">
       <hr>

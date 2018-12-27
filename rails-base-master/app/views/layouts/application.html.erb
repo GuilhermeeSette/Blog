@@ -15,7 +15,6 @@
             <%= link_to 'Codditus', home_index_path,  class: "brand d-inline-block align-center" %>
           </a>
         </div>
-
         <% if session[:user_id].nil? %>
           <a>
             <%= link_to fa_icon('user-plus'), new_user_path,  class: "btn btn-success btn-lg text-uppercase nav-link pull-right btn-up" %>
@@ -28,8 +27,6 @@
           <%= link_to fa_icon('sign-out'), sessions_destroy_path,  class: "btn btn-danger btn-lg text-uppercase nav-link pull-right btn-out" %>
         </a>
         <% end %>
-
-
       </div>
     </div>
   </div>
