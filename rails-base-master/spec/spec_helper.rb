@@ -1,4 +1,6 @@
+
 RSpec.configure do |config|
+
   config.example_status_persistence_file_path = 'tmp/example_status.rspec.txt'
 
   config.expect_with :rspec do |expectations|
@@ -10,4 +12,5 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
 end

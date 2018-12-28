@@ -6,7 +6,7 @@ class CommentsController < BaseController
   end
 
   def create
-    @post = Post.find_by(params[:parent_comment_id])
+
     @comment = Comment.new(comment_params)
     if session[:user_id].nil?
       @comment.author = 'Anonymous'
