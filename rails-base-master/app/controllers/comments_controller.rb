@@ -6,7 +6,6 @@ class CommentsController < BaseController
   end
 
   def create
-
     @comment = Comment.new(comment_params)
     if session[:user_id].nil?
       @comment.author = 'Anonymous'
@@ -32,5 +31,6 @@ class CommentsController < BaseController
 
   def comment_params
     params.require(:comment).permit(:body, :author, :parent_comment_id)
+
   end
 end
