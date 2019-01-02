@@ -5,7 +5,7 @@ class PostsController <ApplicationController
   def index
     @all_posts = Post.all.order(created_at: :desc)
     if params[:search].present?
-      @all_posts = @all_posts.where("lower(title) like ?","%#{params[:search].downcase}%")
+      @all_posts = apply_scopes(search_by_title).all
     end
     if params[:tags_ids].present?
       parameters = params[:tags_ids].split(', ').uniq

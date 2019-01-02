@@ -1,0 +1,26 @@
+= form_with(model: post, local: true) do |form|
+  - if post.errors.any?
+    #error_explanation
+      h2 = pluralize(post.errors.count, "error")
+        | prohibited this post from being saved:
+  ul
+    - post.errors.full_messages.each do |message|
+      li.alert.alert-danger = message
+
+  .container
+    .row.form
+      .col-md-12
+        form.text-center
+          .form-group
+            = form.label :Título
+            = form.text_field :title,placeholder: "Título", class: "form-control"
+          .form-group
+            = form.label :Conteúdo
+            = form.text_area :content,placeholder: "Conteúdo", rows: 20,class: "form-control"
+          .field
+            = form.label :tag_list, "Tags (Separadas por vígula)"
+            = form.text_field :tag_list,placeholder: "Tags", class: "form-control"
+          .form-group
+            = form.hidden_field :autor, value: User.find(session[:user_id]).name
+          .
+            = form.submit 'Criar post',value:"Criar post", class: "btn btn-info"
