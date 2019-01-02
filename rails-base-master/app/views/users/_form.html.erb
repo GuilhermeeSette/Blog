@@ -1,5 +1,5 @@
 <%= form_for(@user) do |form| %>
-<div class="container form">
+<div class="form">
   <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
