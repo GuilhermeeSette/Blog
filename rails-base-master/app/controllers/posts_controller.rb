@@ -1,15 +1,17 @@
 class PostsController <ApplicationController
   skip_before_action :authorize, only: [:show, :index]
   before_action :set_post, only: [:show, :create]
-
+  has_scope :search_by_title
+  has_scope :filter_tags
   def index
+
     @all_posts = Post.all.order(created_at: :desc)
     if params[:search].present?
-      @all_posts = apply_scopes(search_by_title).all
+      @all_posts = @all_posts.search_by_title(params[:search]).all.page(params[:page])
     end
     if params[:tags_ids].present?
       parameters = params[:tags_ids].split(', ').uniq
-      @tags_searched = Tag.where(id: params[:tags_ids].split(', '))
+      @tags_searched = Tag.filter_tags(params[:tags_ids])
       @all_posts = @all_posts.joins(:taggings)
       .where(taggings: { tag_id: parameters })
       .group(:id)

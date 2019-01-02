@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :taggings
   validates :title, :content, :autor, presence: true
   paginates_per 10
-  scope :search_by_title -> params[:search] {where("lower(title) like ?","%#{params[:search].downcase}%")} 
+  scope :search_by_title, -> search_params {where("lower(title) like ?","%#{search_params.downcase}%")} 
 
   def self.tagged_with(id)
     Tag.find_by!(id: id.to_i).posts
